@@ -30,7 +30,7 @@ export class TokenStorageService {
     if (user) {
       return JSON.parse(user)
     } else {
-      return {}
+      return null
     }
   }
 }
