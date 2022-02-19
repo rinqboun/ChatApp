@@ -1,1 +1,25 @@
-<p>profile works!</p>
+<div *ngIf="currenUser; else loggedOut">
+  <header>
+    <h3>
+      {{currenUser.email}} Profile
+    </h3>
+  </header>
+  <p>
+    Token:
+    {{currenUser.accessToken}}
+  </p>
+  <p>
+    Email:
+    {{currenUser.email}}
+  </p>
+  Roles:
+  <ul>
+    <li *ngFor="let role of currenUser.roles">
+      {{role}}
+    </li>
+  </ul>
+</div>
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>
