@@ -1,1 +1,35 @@
-<router-outlet></router-outlet>
+<div id="app">
+  <nav>
+    <a href="#">ChatApp</a>
+    <ul routerLinkActive="active">
+      <li>
+        <a href="/home" routerLink="home">Home</a>
+      </li>
+      <li *ngIf="isLoggedIn">
+        <a href="/user" routerLink="user">User Board</a>
+      </li>
+    </ul>
+
+    <ul *ngIf="!isLoggedIn">
+      <li>
+        <a href="/register" routerLink="register">Sign Up</a>
+      </li>
+      <li>
+        <a href="/login" routerLink="login">Login</a>
+      </li>
+    </ul>
+
+    <ul *ngIf="isLoggedIn">
+      <li>
+        <a href="/profile" routerLink="profile">{{email}}</a>
+      </li>
+      <li>
+        <a href (click)="logout()">LogOut</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
