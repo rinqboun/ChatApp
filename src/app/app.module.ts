@@ -29,7 +29,9 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule,
+    HttpClientModule
   ],
   providers: [authInterceptorProvides],
   bootstrap: [AppComponent]
