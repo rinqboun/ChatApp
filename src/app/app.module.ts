@@ -8,8 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-//
-// import { authInterceptor } from './helpers/auth.interceptor';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { authInterceptorProvides } from './helpers/auth.interceptor';
 
 const routes: Routes = [
   {path: '', redirectTo:'/home', pathMatch:'full'},
@@ -24,13 +24,14 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    BoardUserComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [authInterceptorProvides],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
