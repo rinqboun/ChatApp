@@ -1,1 +1,45 @@
-<p>login works!</p>
+<form
+  *ngIf="!isLoggedIn"
+  name="form"
+  (ngSubmit)="f.form.valid && onSubmit()"
+  #f="ngForm"
+  novalidate
+>
+  <label for="email">Email</label>
+  <input
+    type="email"
+    name="email"
+    [(ngModel)]="form.email"
+    required
+    email
+    #email="ngModel"
+  />
+  <div *ngIf="email.errors && f.submitted">
+    <div *ngIf="email.errors['required']">Email is required</div>
+    <div *ngIf="email.errors['email']">Not valid email</div>
+  </div>
+
+  <label for="password">Password</label>
+  <input
+    type="password"
+    name="password"
+    [(ngModel)]="form.password"
+    required
+    minlength="6"
+    #password="ngModel"
+  />
+  <div *ngIf="password.errors && f.submitted">
+    <div *ngIf="password.errors['required']">Password is required</div>
+    <div *ngIf="password.errors['minlength']">Password must be at least 6 characters</div>
+  </div>
+
+  <button>Log in</button>
+
+  <div *ngIf="f.submitted && isLoginFailed">
+    Login failed. {{errorMessage}}
+  </div>
+
+  <div *ngIf="isLoggedIn">
+    Logged in as {{roles}}
+  </div>
+</form>
